@@ -8,8 +8,16 @@ permutation variable selection
 Variable selection using the permutation test on several scores of importance: \code{IIS}, \code{DIIS} and \code{DEPTH}. 
 }
 \usage{
-permute_select_surv(xdata, Y.names, P.names, T.names, importance = "IIS", method = "R2",
-                    Bag, args.rpart, args.parallel = list(numWorkers = 1), nperm = 50)
+permute_select_surv(xdata, 
+    Y.names, 
+    P.names, 
+    T.names, 
+    importance = "IIS", 
+    method = "R2",
+    Bag, 
+    args.rpart, 
+    args.parallel = list(numWorkers = 1), 
+    nperm = 50)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -84,8 +92,15 @@ Cyprien Mbogning and Philippe Broet
  set.seed(5000)
  
  data(burn)
- resperm0 <- permute_select_surv(xdata = burn, Y.names, P.names, T.names, method = "LR", 
-        Bag = mybag, args.rpart = myarg, args.parallel = list(numWorkers = 1), nperm = 150)
+ resperm0 <- suppressWarnings(permute_select_surv(xdata = burn, 
+       Y.names, 
+       P.names, 
+       T.names, 
+       method = "LR", 
+       Bag = mybag, 
+       args.rpart = myarg, 
+       args.parallel = list(numWorkers = 1), 
+       nperm = 150))
  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

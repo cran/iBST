@@ -83,7 +83,7 @@
       temp[i] <- 1
       if(x[i] != x[i+1])
       {
-        tfit <- coxph(Surv(y[, 1], y[, 2]) ~ temp, robust = T)
+        tfit <- coxph(Surv(y[, 1], y[, 2]) ~ temp, robust = TRUE)
 
         goodness[i] <- PseudoR2.Cure(ygene = temp, ydelai = y[, 1], yetat = y[, 2], strate = log(wt))
         direction[i] <- sign(tfit$coef[1])

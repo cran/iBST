@@ -59,6 +59,7 @@ BMC bioinformatics, 17(1), 1.
 Cyprien Mbogning and Philippe Broet
 }
 
+
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
@@ -80,12 +81,20 @@ Cyprien Mbogning and Philippe Broet
  burn.BagEssai1 <- Bagg_Surv(burn, Y.names, P.names, T.names, method = "R2", args.rpart = myarg, 
                            args.parallel = list(numWorkers = 1), Bag = mybag)
 
-pred0 <- Bagg_pred_Surv(burn, Y.names, P.names, burn.BagEssai0, args.parallel =
-                        list(numWorkers = 1), OOB = TRUE) 
+pred0 <- Bagg_pred_Surv(burn, 
+    Y.names, 
+    P.names, 
+    burn.BagEssai0, 
+    args.parallel = list(numWorkers = 1), 
+    OOB = TRUE) 
  
  
- pred1 <- Bagg_pred_Surv(burn, Y.names, P.names, burn.BagEssai1, args.parallel =
-                         list(numWorkers = 1), OOB = TRUE) 
+ pred1 <- Bagg_pred_Surv(burn, 
+    Y.names, 
+    P.names, 
+    burn.BagEssai1, 
+    args.parallel = list(numWorkers = 1), 
+    OOB = TRUE) 
  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

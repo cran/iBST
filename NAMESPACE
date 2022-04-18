@@ -1,11 +1,6 @@
-exportPattern("^[[:alpha:]]+")
-
-useDynLib(iBST)
-
+useDynLib(iBST, .registration=TRUE)
 import(survival , rpart , parallel)
-
-importFrom(Rcpp, sourceCpp)
-
-importFrom("stats", "as.formula", "glm", "ks.test", "pnorm", "rnorm", "runif", "sd")
-
-
+importFrom(Rcpp, evalCpp)
+importFrom("stats", "as.formula", "glm", "ks.test", "pnorm", "rnorm",
+             "runif", "sd")
+exportPattern("^[[:alpha:]]+")

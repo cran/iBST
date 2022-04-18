@@ -49,8 +49,15 @@ Cyprien Mbogning and Philippe Broet
 }
 \examples{
 data(burn)
-PseudoR2.Cure(ygene = burn$Z3, ydelai = burn$T3, yetat = burn$D3, strate = burn$Z2)
-PseudoR2.Cure(ygene = burn$Z2, ydelai = burn$T3, yetat = burn$D3, strate = burn$Z2)
+PseudoR2.Cure(ygene = burn$Z3, 
+   ydelai = burn$T3, 
+   yetat = burn$D3, 
+   strate = burn$Z2)
+   
+PseudoR2.Cure(ygene = burn$Z2, 
+   ydelai = burn$T3, 
+   yetat = burn$D3, 
+   strate = burn$Z2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

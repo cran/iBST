@@ -19,7 +19,9 @@ function(ygene, ydelai, yetat, strate, ordered = FALSE) {
   # cureE = exp( beta Z ) 
   cureE <- if(is.null(strate)) rep(1,n) else exp(strate %*% alpha )
   
-  .Call("iBST_COX", ydelai, cureE, ygene, yetat, PACKAGE = "iBST")/n_times_events
+  .COX(ydelai, cureE, ygene, yetat)/n_times_events
+  
+  #.Call("COX", ydelai, cureE, ygene, yetat, PACKAGE = "iBST")/n_times_events
   # COX(ydelai, cureE, ygene, yetat)/n_times_events
   
   

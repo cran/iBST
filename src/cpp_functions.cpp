@@ -48,17 +48,3 @@ double COX(NumericVector tps, NumericVector cureE, NumericVector gene, NumericVe
 
   return W*W/Sig;
 }
-
-RcppExport SEXP iBST_COX(SEXP tpsSEXP, SEXP cureESEXP, SEXP geneSEXP, SEXP deltaSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< NumericVector >::type tps(tpsSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type cureE(cureESEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type gene(geneSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type delta(deltaSEXP);
-    __result = Rcpp::wrap(COX(tps, cureE, gene, delta));
-    return __result;
-END_RCPP
-}
-

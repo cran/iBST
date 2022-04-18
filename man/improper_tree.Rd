@@ -8,7 +8,12 @@ Fit an improper survival tree for the mixed population (susceptible and nonsusce
 proposed pseudo R2 criterion or an adjusted Logrank criterion
 }
 \usage{
-improper_tree(xdata, Y.names, P.names, T.names, method = "R2", args.rpart)
+improper_tree(xdata, 
+     Y.names, 
+     P.names, 
+     T.names, 
+     method = "R2", 
+     args.rpart)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -36,6 +41,7 @@ the root node counted as depth 0. ...
 See \code{\link[rpart]{rpart.control}} for further details 
 }
 }
+
 \value{
 An unprunned improper survival tree
 }
@@ -59,9 +65,15 @@ Cyprien Mbogning and Philippe Broet
  Y.names = c("T3" ,"D3")
  P.names = 'Z2'
  T.names = c("Z1", paste("Z", 3:11, sep = ''))
- burn.tree <- improper_tree(burn, Y.names, P.names, T.names, method = "R2", args.rpart = myarg)
+ burn.tree <- suppressWarnings(improper_tree(burn, 
+    Y.names, 
+    P.names, 
+    T.names, 
+    method = "R2", 
+    args.rpart = myarg))
+    
  plot(burn.tree)
- text(burn.tree, cex = .7)
+ text(burn.tree, cex = .7, xpd = TRUE)
  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

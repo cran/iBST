@@ -8,8 +8,14 @@ Bagging improper survival trees
 Bagging procedure to aggregate several improper trees using either the pseudo-R2 procedure or the adjusted Logrank procedure. Several scores for variables importance are computed.
 }
 \usage{
-Bagg_Surv(xdata, Y.names, P.names, T.names, method = "R2", args.rpart, 
-          args.parallel = list(numWorkers = 1), Bag = 100)
+Bagg_Surv(xdata, 
+     Y.names, 
+     P.names, 
+     T.names, 
+     method = "R2", 
+     args.rpart, 
+     args.parallel = list(numWorkers = 1), 
+     Bag = 100)
 }
 
 \arguments{
@@ -87,11 +93,23 @@ This version of the code allows for the moment only one variable to have an impa
  mybag = 40
  set.seed(5000)
  
- burn.BagEssai0 <- Bagg_Surv(burn, Y.names, P.names, T.names, method = "LR", args.rpart = myarg, 
-                           args.parallel = list(numWorkers = 1), Bag = mybag)
+ burn.BagEssai0 <- Bagg_Surv(burn, 
+    Y.names, 
+    P.names, 
+    T.names, 
+    method = "LR", 
+    args.rpart = myarg, 
+    args.parallel = list(numWorkers = 1), 
+    Bag = mybag)
  
- burn.BagEssai1 <- Bagg_Surv(burn, Y.names, P.names, T.names, method = "R2", args.rpart = myarg, 
-                           args.parallel = list(numWorkers = 1), Bag = mybag)
+ burn.BagEssai1 <- Bagg_Surv(burn, 
+    Y.names, 
+    P.names, 
+    T.names, 
+    method = "R2", 
+    args.rpart = myarg, 
+    args.parallel = list(numWorkers = 1), 
+    Bag = mybag)
 
 }
 }
