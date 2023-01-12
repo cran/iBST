@@ -5,9 +5,9 @@
   tfit <- coxph(Surv(y[, 1], y[, 2]) ~ 1)
   wEvents <- tfit$nevent
   dev0 <- (-2)*tfit$loglik
-  list(label = wEvents, deviance = dev0) }
+  list(label = wEvents, deviance = dev0[1]) }
 
-##	Initialize fonction
+##	Initialize function
 .survinit <- function(y, params, wt){
   sfun <- function(yval, dev, wt, ylevel, digits){
     paste("events = ", round(yval),

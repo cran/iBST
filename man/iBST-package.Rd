@@ -3,7 +3,7 @@
 \alias{iBST}
 \docType{package}
 \title{
-improper Bagging Survival Tree
+improper Bagging Subsample Survival Tree
 }
 \description{
              Fit a bagging survival tree on a mixture of population (susceptible and                         nonsusceptible)using either a pseudo R2 criterion or an adjusted Logrank criterion.              The predictor is evaluated using the Out Of Bag Integrated Brier Score (IBS) and                several scores of importanceare computed for variable selection. The thresholds                 values for variable selection are computed using a nonparametric permutation test.
@@ -13,8 +13,8 @@ improper Bagging Survival Tree
 \tabular{ll}{
 Package: \tab iBST\cr
 Type: \tab Package\cr
-Version: \tab 1.1\cr
-Date: \tab 2022-04-17\cr
+Version: \tab 1.2\cr
+Date: \tab 2023-01-12\cr
 License: \tab GPL(>=2.0)\cr
 }
 }
@@ -27,6 +27,8 @@ Maintainer: \packageMaintainer{iBST}
 Mbogning, C. and Broet, P. (2016). Bagging survival tree procedure for
 variable selection and prediction in the presence of nonsusceptible patients.
 BMC bioinformatics, 17(1), 1.
+
+Duhaze Julianne et al. (2020). A Machine Learning Approach for High-Dimensional Time-to-Event Prediction With Application to Immunogenicity of Biotherapies in the ABIRISK Cohort. Frontiers in Immunology, 11.
 }
 
 \keyword{ package }
@@ -46,6 +48,7 @@ BMC bioinformatics, 17(1), 1.
  P.names = 'Z2'
  T.names = c("Z1", paste("Z", 3:11, sep = ''))
  mybag = 40
+ feat_samp = length(T.names)
  set.seed(5000)
  
  ## fit an improper survival tree
@@ -67,7 +70,7 @@ BMC bioinformatics, 17(1), 1.
     method = "LR", 
     args.rpart = myarg, 
     args.parallel = list(numWorkers = 1), 
-    Bag = mybag))
+    Bag = mybag, feat = feat_samp))
  
  ## fit an improper Bagging survival tree with the pseudo R2 criterion
  burn.BagEssai1 <- suppressWarnings(Bagg_Surv(burn, 
@@ -77,7 +80,7 @@ BMC bioinformatics, 17(1), 1.
     method = "R2", 
     args.rpart = myarg, 
     args.parallel = list(numWorkers = 1), 
-    Bag = mybag))
+    Bag = mybag, feat = feat_samp))
 
  ## Plot the variable importance scores
  par(mfrow=c(1,3))

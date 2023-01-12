@@ -1,11 +1,11 @@
 Package: iBST
 Type: Package
 Title: Improper Bagging Survival Tree
-Version: 1.1
-Date: 2022-04-17
+Version: 1.2
+Date: 2023-01-12
 Author: Cyprien Mbogning and Philippe Broet
 Maintainer: Cyprien Mbogning <cyprien.mbogning@gmail.com>
-Description: Fit a bagging survival tree on a mixture of population (susceptible and nonsusceptible)
+Description: Fit a full or subsampling bagging survival tree on a mixture of population (susceptible and nonsusceptible)
              using either a pseudo R2 criterion or an adjusted Logrank criterion. The predictor is 
              evaluated using the Out Of Bag Integrated Brier Score (IBS) and several scores of importance
              are computed for variable selection. The thresholds values for variable selection are 
@@ -18,6 +18,6 @@ Depends: survival , rpart , parallel
 Imports: Rcpp (>= 1.0.8)
 LinkingTo: Rcpp
 NeedsCompilation: yes
-Packaged: 2022-04-18 10:40:36 UTC; cypry
+Packaged: 2023-01-12 14:54:03 UTC; cypry
 Repository: CRAN
-Date/Publication: 2022-04-18 11:12:31 UTC
+Date/Publication: 2023-01-12 16:20:02 UTC

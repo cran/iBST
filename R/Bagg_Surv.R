@@ -1,5 +1,5 @@
 Bagg_Surv <-
-function(xdata, Y.names, P.names, T.names, method = 'R2', args.rpart, args.parallel = list(numWorkers = 1), Bag = 100) 
+function(xdata, Y.names, P.names, T.names, method = 'R2', args.rpart, args.parallel = list(numWorkers = 1), Bag = 100, feat = 5) 
 {
   #set.seed(seed) ; 
   methodSurvR2 = list(eval = .surveval, split = .survsplitR2, init = .survinit)
@@ -21,7 +21,7 @@ function(xdata, Y.names, P.names, T.names, method = 'R2', args.rpart, args.paral
     
     # YSTRATE <- xdata_bag[, P.names] + 1 ;
     YSTRATE <- exp(xdata_bag[, P.names]) ;
-    tree_surv <- rpart(as.formula(paste(paste('Surv(', paste(Y.names, collapse = ','),')', sep = ''), '~', paste(T.names, collapse = '+'), sep = '')), 
+    tree_surv <- rpart(as.formula(paste(paste('Surv(', paste(Y.names, collapse = ','),')', sep = ''), '~', paste(T.names[sample(length(T.names), size = feat, replace = FALSE)], collapse = '+'), sep = '')), 
                        data = xdata_bag, method = methodsurv,  control = args.rpart, weights = YSTRATE, y = FALSE ) ;
 #     tree_surv$functions <- NULL
     tree_surv$terms  <- NULL

@@ -54,6 +54,8 @@ A value of \code{TRUE} or \code{FALSE} with \code{TRUE} indicating  the computat
 Mbogning, C. and Broet, P. (2016). Bagging survival tree procedure for
 variable selection and prediction in the presence of nonsusceptible patients.
 BMC bioinformatics, 17(1), 1.
+
+Duhaze Julianne et al. (2020). A Machine Learning Approach for High-Dimensional Time-to-Event Prediction With Application to Immunogenicity of Biotherapies in the ABIRISK Cohort. Frontiers in Immunology, (11).
 }
 \author{
 Cyprien Mbogning and Philippe Broet
@@ -73,13 +75,26 @@ Cyprien Mbogning and Philippe Broet
  P.names = 'Z2'
  T.names = c("Z1", paste("Z", 3:11, sep = ''))
  mybag = 40
+ feat_samp = length(T.names)
  set.seed(5000)
  
- burn.BagEssai0 <- Bagg_Surv(burn, Y.names, P.names, T.names, method = "LR", args.rpart = myarg, 
-                           args.parallel = list(numWorkers = 1), Bag = mybag)
+ burn.BagEssai0 <- suppressWarnings(Bagg_Surv(burn, 
+        Y.names, 
+        P.names, 
+        T.names, 
+        method = "LR", 
+        args.rpart = myarg, 
+        args.parallel = list(numWorkers = 1), 
+        Bag = mybag, feat = feat_samp))
  
- burn.BagEssai1 <- Bagg_Surv(burn, Y.names, P.names, T.names, method = "R2", args.rpart = myarg, 
-                           args.parallel = list(numWorkers = 1), Bag = mybag)
+ burn.BagEssai1 <- suppressWarnings(Bagg_Surv(burn, 
+        Y.names, 
+        P.names, 
+        T.names, 
+        method = "R2", 
+        args.rpart = myarg, 
+        args.parallel = list(numWorkers = 1), 
+        Bag = mybag, feat = feat_samp))
 
 pred0 <- Bagg_pred_Surv(burn, 
     Y.names, 

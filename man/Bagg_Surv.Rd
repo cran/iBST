@@ -5,7 +5,7 @@
 Bagging improper survival trees
 }
 \description{
-Bagging procedure to aggregate several improper trees using either the pseudo-R2 procedure or the adjusted Logrank procedure. Several scores for variables importance are computed.
+Bagging sunbsampling procedure to aggregate several improper trees using either the pseudo-R2 procedure or the adjusted Logrank procedure. Several scores for variables importance are computed.
 }
 \usage{
 Bagg_Surv(xdata, 
@@ -15,7 +15,7 @@ Bagg_Surv(xdata,
      method = "R2", 
      args.rpart, 
      args.parallel = list(numWorkers = 1), 
-     Bag = 100)
+     Bag = 100, feat = 5)
 }
 
 \arguments{
@@ -48,6 +48,9 @@ a list  containing the number of parallel computing arguments: The number of wor
   \item{Bag}{
 The number of Bagging samples to consider 
 }
+  \item{feat}{
+The size of features subsample. A full baging when feat is the total number of features. 
+}
 }
 \details{
 For the Bagging procedure, it is mendatory to set \code{maxcompete = 0} and \code{maxsurrogate = 0} within the \code{args.rpart} arguments. This will ensured the correct calculation of the  importance of variables and also a better computation time.
@@ -70,6 +73,8 @@ survival tree model }
 Mbogning, C. and Broet, P. (2016). Bagging survival tree procedure for
 variable selection and prediction in the presence of nonsusceptible patients.
 BMC bioinformatics, 17(1), 1.
+
+Duhaze Julianne et al. (2020). A Machine Learning Approach for High-Dimensional Time-to-Event Prediction With Application to Immunogenicity of Biotherapies in the ABIRISK Cohort. Frontiers in Immunology, 11.
 }
 \author{
 Cyprien Mbogning and Philippe Broet
@@ -91,25 +96,26 @@ This version of the code allows for the moment only one variable to have an impa
  P.names = 'Z2'
  T.names = c("Z1", paste("Z", 3:11, sep = ''))
  mybag = 40
+ feat_samp = length(T.names)
  set.seed(5000)
  
- burn.BagEssai0 <- Bagg_Surv(burn, 
+ burn.BagEssai0 <- suppressWarnings(Bagg_Surv(burn, 
     Y.names, 
     P.names, 
     T.names, 
     method = "LR", 
     args.rpart = myarg, 
     args.parallel = list(numWorkers = 1), 
-    Bag = mybag)
+    Bag = mybag, feat = feat_samp))
  
- burn.BagEssai1 <- Bagg_Surv(burn, 
+ burn.BagEssai1 <- suppressWarnings(Bagg_Surv(burn, 
     Y.names, 
     P.names, 
     T.names, 
     method = "R2", 
     args.rpart = myarg, 
     args.parallel = list(numWorkers = 1), 
-    Bag = mybag)
+    Bag = mybag, feat = feat_samp))
 
 }
 }
